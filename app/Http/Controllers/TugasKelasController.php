@@ -65,8 +65,7 @@ class TugasKelasController extends Controller
     // Menampilkan form untuk mengedit tugas kelas
     public function edit($id)
     {
-        $tugasKelas = TugasKelas::findOrFail($id);
-        return view('tugas_kelas.edit', compact('tugasKelas'));
+        // gk kepake jadi saya hapus
     }
 
     // Memperbarui tugas kelas
