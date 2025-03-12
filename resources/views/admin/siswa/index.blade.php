@@ -126,11 +126,12 @@
                     </div>
                     <div class="form-group">
                         <label for="jk">Jenis Kelamin</label>
-                        <select id="jk" name="jk" class="select2bs4 form-control @error('jk') is-invalid @enderror">
+                        <input type="text" id="jk" name="jk" class="form-control @error('jk') is-invalid @enderror" value="Perempuan" readonly>
+                        <!-- <select id="jk" name="jk" class="select2bs4 form-control @error('jk') is-invalid @enderror">
                             <option value="">-- Pilih Jenis Kelamin --</option>
                             <option value="L">Laki-Laki</option>
                             <option value="P">Perempuan</option>
-                        </select>
+                        </select> -->
                     </div>
                     <div class="form-group">
                         <label for="tmp_lahir">Tempat Lahir</label>
