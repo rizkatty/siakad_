@@ -1,0 +1,11 @@
+stages:
+  - test-ssh
+
+test_ssh:
+  stage: test-ssh
+  script:
+    # Tambahkan VPS ke known_hosts
+    - mkdir -p ~/.ssh
+    - ssh-keyscan -H 46.202.162.83 >> ~/.ssh/known_hosts
+    # Uji koneksi SSH
+    - ssh root@46.202.162.83 "echo 'SSH connection successful!'"
