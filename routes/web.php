@@ -166,6 +166,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile-sekolah', [ProfileSekolahController::class, 'index'])->name('profile.sekolah');
     Route::resource('profile_sekolah', ProfileSekolahController::class);
     Route::get('/tahun_pelajaran', [TahunPelajaranController::class, 'index'])->name('tahun.pelajaran');
+    Route::put('/tahun_pelajaran/update/{id}', [TahunPelajaranController::class, 'update'])->name('tahun_pelajaran.update');
     // end routes profile sekolah
   });
 });
