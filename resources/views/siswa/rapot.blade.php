@@ -4,11 +4,21 @@
   <li class="breadcrumb-item active">Nilai Rapot</li>
 @endsection
 @section('content')
+<style>
+        @media print {
+            .card-header {
+                display: none;
+            }
+        }
+    </style>
 <div class="col-md-12">
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
         <h3 class="card-title">Nilai Rapot Siswa</h3>
+        <button type="button" class="btn btn-primary float-right" onclick="printPage()">
+          <i class="fas fa-print"></i> Print
+        </button>
       </div>
       <!-- /.card-header -->
       <!-- form start -->
@@ -160,5 +170,9 @@
 @section('script')
     <script>
         $("#RapotSiswa").addClass("active");
+
+        function printPage() {
+            window.print();
+        }
     </script>
 @endsection
