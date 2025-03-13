@@ -127,12 +127,15 @@ class KelasController extends Controller
         $countJadwal = Jadwal::where('kelas_id', $kelas->id)->count();
         if ($countJadwal >= 1) {
             Jadwal::where('kelas_id', $kelas->id)->delete();
+            Kelas::where('id', $kelas->id)->delete();
         } else {
         }
         $countSiswa = Siswa::where('kelas_id', $kelas->id)->count();
         if ($countSiswa >= 1) {
             Siswa::where('kelas_id', $kelas->id)->delete();
+            Kelas::where('id', $kelas->id)->delete();
         } else {
+            Kelas::where('id', $kelas->id)->delete();
         }
         $kelas->delete();
         return redirect()->back()->with('warning', 'Data kelas berhasil dihapus! (Silahkan cek trash data kelas)');
