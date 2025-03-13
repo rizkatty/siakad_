@@ -4,11 +4,21 @@
   <li class="breadcrumb-item active">Entry Nilai Rapot</li>
 @endsection
 @section('content')
+<style>
+        @media print {
+            .card-header {
+                display: none;
+            }
+        }
+    </style>
 <div class="col-md-12">
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
         <h3 class="card-title">Entry Nilai Rapot</h3>
+        <button type="button" class="btn btn-primary float-right" onclick="printPage()">
+          <i class="fas fa-print"></i> Print
+        </button>
       </div>
       <!-- /.card-header -->
         <div class="card-body">
@@ -250,5 +260,9 @@
         $("#NilaiGuru").addClass("active");
         $("#liNilaiGuru").addClass("menu-open");
         $("#RapotGuru").addClass("active");
+
+        function printPage() {
+            window.print();
+        }
     </script>
 @endsection
