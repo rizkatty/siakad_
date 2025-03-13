@@ -27,7 +27,7 @@
                         @foreach($walikelas as $result => $data)
                             <tr class="text-center">
                                 <td>{{ $loop->iteration }}</td>
-                                <td> {{ $data->kelas->nama_kelas }}</td>
+                                <td>{{ optional($data->kelas)->nama_kelas ?? 'Kelas Tidak Diketahui' }}</td>
                                 <td>{{ $data->guru->nama_guru }}</td>
                                 <td>
                                     <button class="btn btn-primary btn-sm"
