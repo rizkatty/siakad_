@@ -4,11 +4,22 @@
   <li class="breadcrumb-item active">Show Rapot</li>
 @endsection
 @section('content')
+<style>
+        @media print {
+            .card-header {
+                display: none;
+            }
+        }
+    </style>
 <div class="col-md-12">
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
         <h3 class="card-title">Show Rapot</h3>
+         <!-- Print Button -->
+         <button type="button" class="btn btn-primary float-right" onclick="printPage()">
+          <i class="fas fa-print"></i> Print
+        </button>
       </div>
       <!-- /.card-header -->
         <div class="card-body">
@@ -112,10 +123,16 @@
     <!-- /.card -->
 </div>
 @endsection
+
 @section('script')
     <script>
         $("#Nilai").addClass("active");
         $("#liNilai").addClass("menu-open");
         $("#Rapot").addClass("active");
+
+        function printPage() {
+            window.print();
+        }
     </script>
 @endsection
+
