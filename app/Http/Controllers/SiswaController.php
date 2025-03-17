@@ -26,7 +26,7 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $kelas = Kelas::OrderBy('nama_kelas', 'asc')->get();
+        $kelas = Kelas::orderByRaw("FIELD(nama_kelas, 'KELAS VIII A', 'KELAS VIII B', 'KELAS VIII C', 'KELAS IX A', 'KELAS IX B', 'KELAS IX C')")->get();
         return view('admin.siswa.index', compact('kelas'));
     }
 
@@ -57,7 +57,6 @@ class SiswaController extends Controller
             })
             ->get();
         return view('siswa.materipelajaran', compact('materi'));
-
     }
 
     /**
@@ -168,7 +167,7 @@ class SiswaController extends Controller
             'alamat'    => $request->alamat,
             'tgl_lahir' => $request->tgl_lahir,
         ];
-        
+
         $siswa->update($siswa_data);
 
         return redirect()->route('siswa.index')->with('success', 'Data siswa berhasil diperbarui!');
