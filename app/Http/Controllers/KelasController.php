@@ -8,9 +8,11 @@ use App\Guru;
 use App\Paket;
 use App\Jadwal;
 use App\Siswa;
+use App\WaliKelas;
 use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 
 class KelasController extends Controller
 {
@@ -21,11 +23,17 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $kelas = Kelas::OrderBy('nama_kelas', 'asc')->get();
-        $guru = Guru::OrderBy('nama_guru', 'asc')->get();
-        $paket = Paket::all();
+        try {
+            $kelas = Kelas::orderByRaw("FIELD(nama_kelas, 'KELAS VIII A', 'KELAS VIII B', 'KELAS VIII C', 'KELAS IX A', 'KELAS IX B', 'KELAS IX C')")->get();
+            $guru = Guru::orderByRaw('LOWER(nama_guru) asc')->get();
+            $paket = Paket::all();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'An error occurred while retrieving data.');
+        }
+
         return view('admin.kelas.index', compact('kelas', 'guru', 'paket'));
     }
+
 
     public function kelas_guru()
     {
@@ -55,31 +63,52 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->id != '') {
-            $this->validate($request, [
-                'nama_kelas' => 'required|min:4|max:20',
-                'guru_id' => 'required|unique:kelas',
-            ]);
-        } else {
-            $this->validate($request, [
-                'nama_kelas' => 'required|unique:kelas|min:4|max:20',
-                'guru_id' => 'required|unique:kelas',
-            ]);
+        DB::beginTransaction();
+
+        try {
+            if ($request->id != '') {
+                $this->validate($request, [
+                    'nama_kelas' => 'required|min:4|max:20',
+                    'guru_id' => 'required|unique:kelas,guru_id,' . $request->id,
+                ]);
+            } else {
+                $this->validate($request, [
+                    'nama_kelas' => 'required|unique:kelas|min:4|max:20',
+                    'guru_id' => 'required|unique:kelas',
+                ]);
+            }
+
+            $kelas = Kelas::updateOrCreate(
+                [
+                    'id' => $request->id
+                ],
+                [
+                    'nama_kelas' => $request->nama_kelas,
+                    'paket_id' => '9',
+                    'guru_id' => $request->guru_id,
+                ]
+            );
+
+            if ($request->has('kelas_id')) {
+                WaliKelas::create([
+                    'kelas_id' => $request->kelas_id,
+                    'guru_id' => $request->guru_id,
+                ]);
+            } else {
+                WaliKelas::create([
+                    'kelas_id' => $kelas->id,
+                    'guru_id' => $request->guru_id,
+                ]);
+            }
+
+            DB::commit();
+            return redirect()->back()->with('success', 'Data kelas berhasil diperbarui!');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat menyimpan data: ' . $e->getMessage());
         }
-
-        Kelas::updateOrCreate(
-            [
-                'id' => $request->id
-            ],
-            [
-                'nama_kelas' => $request->nama_kelas,
-                'paket_id' => '9',
-                'guru_id' => $request->guru_id,
-            ]
-        );
-
-        return redirect()->back()->with('success', 'Data kelas berhasil diperbarui!');
     }
+
 
     /**
      * Display the specified resource.

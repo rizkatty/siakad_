@@ -21,18 +21,17 @@ class WaliKelasController extends Controller
     {
         // Validasi input
         $request->validate([
-            'kelas_id' => 'required|exists:kelas,id',
-            'guru_id' => 'required|exists:guru,id',
+            'kelas_id' => 'required',
+            'guru_id' => 'required', // Validasi guru_id
         ]);
 
-        // Simpan data ke tabel wali_kelas
+        // Simpan data wali kelas
         WaliKelas::create([
             'kelas_id' => $request->kelas_id,
             'guru_id' => $request->guru_id,
         ]);
 
-        // Redirect dengan pesan sukses
-        return redirect()->back()->with('success', 'Data Wali Kelas berhasil ditambahkan.');
+        return redirect()->back()->with('success', 'Data wali kelas berhasil disimpan!');
     }
 
     public function update(Request $request, $id)
@@ -65,6 +64,4 @@ class WaliKelasController extends Controller
         // Redirect dengan pesan sukses
         return redirect()->route('walikelas.list')->with('success', 'Data Wali Kelas berhasil dihapus.');
     }
-
-
 }
