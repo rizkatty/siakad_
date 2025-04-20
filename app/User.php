@@ -5,12 +5,10 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
     use Notifiable;
-    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +16,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-       'id','name', 'email', 'password', 'role', 'no_induk', 'id_card'
+        'id',
+        'name',
+        'email',
+        'password',
+        'role',
+        'no_induk',
+        'id_card'
     ];
 
     public function guru($id)
@@ -39,7 +43,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     /**

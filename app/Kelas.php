@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Kelas extends Model
 {
-    use SoftDeletes;
 
     protected $fillable = ['paket_id', 'nama_kelas', 'guru_id'];
 
