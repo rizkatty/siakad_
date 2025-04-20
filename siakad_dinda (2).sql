@@ -1105,3 +1105,5 @@ UPDATE guru SET deleted_at = NULL WHERE deleted_at IS NOT NULL;
 UPDATE siswa SET deleted_at = NULL WHERE deleted_at IS NOT NULL;
 UPDATE wali_kelas SET deleted_at = NULL WHERE deleted_at IS NOT NULL;
 
+$2y$12$llFXrYO.Txy/IpQFHFHBYeoYauWvhEuryNYO.i6sJjjmOUHljZnrm
+
