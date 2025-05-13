@@ -66,48 +66,26 @@ class KelasController extends Controller
         DB::beginTransaction();
 
         try {
-            if ($request->id != '') {
-                $this->validate($request, [
-                    'nama_kelas' => 'required|min:4|max:20',
-                    'guru_id' => 'required|unique:kelas,guru_id,' . $request->id,
-                ]);
-            } else {
-                $this->validate($request, [
-                    'nama_kelas' => 'required|unique:kelas|min:4|max:20',
-                    'guru_id' => 'required|unique:kelas',
-                ]);
-            }
+            $this->validate($request, [
+                'nama_kelas' => 'required|unique:kelas,nama_kelas|min:4|max:20',
+            ]);
 
-            $kelas = Kelas::updateOrCreate(
-                [
-                    'id' => $request->id
-                ],
-                [
-                    'nama_kelas' => $request->nama_kelas,
-                    'paket_id' => '9',
-                    'guru_id' => $request->guru_id,
-                ]
-            );
-
-            if ($request->has('kelas_id')) {
-                WaliKelas::create([
-                    'kelas_id' => $request->kelas_id,
-                    'guru_id' => $request->guru_id,
-                ]);
-            } else {
-                WaliKelas::create([
-                    'kelas_id' => $kelas->id,
-                    'guru_id' => $request->guru_id,
-                ]);
-            }
+            Kelas::create([
+                'nama_kelas' => $request->nama_kelas,
+                'paket_id' => 9, // Tetap hardcoded sesuai kebutuhan
+            ]);
 
             DB::commit();
-            return redirect()->back()->with('success', 'Data kelas berhasil diperbarui!');
+
+            return redirect()->back()->with('success', 'Data kelas berhasil disimpan!');
         } catch (\Exception $e) {
-            DB::rollback();
+            DB::rollBack();
+
             return redirect()->back()->with('error', 'Terjadi kesalahan saat menyimpan data: ' . $e->getMessage());
         }
     }
+
+
 
 
     /**
