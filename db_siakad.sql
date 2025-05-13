@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 13/05/2025 10:55:24
+ Date: 13/05/2025 11:33:00
 */
 
 SET NAMES utf8mb4;
@@ -36,18 +36,11 @@ CREATE TABLE `absensi_siswa`  (
   CONSTRAINT `absensi_siswa_kehadiran_id_foreign` FOREIGN KEY (`kehadiran_id`) REFERENCES `kehadiran` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `absensi_siswa_mapel_id_foreign` FOREIGN KEY (`mapel_id`) REFERENCES `mapel` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `absensi_siswa_siswa_id_foreign` FOREIGN KEY (`siswa_id`) REFERENCES `siswa` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of absensi_siswa
 -- ----------------------------
-INSERT INTO `absensi_siswa` VALUES (1, '2025-05-13', 1, 1, 13, '2025-05-13 09:34:10', '2025-05-13 09:34:10');
-INSERT INTO `absensi_siswa` VALUES (2, '2025-05-13', 10, 2, 13, '2025-05-13 09:34:10', '2025-05-13 09:34:10');
-INSERT INTO `absensi_siswa` VALUES (3, '2025-05-13', 19, 1, 13, '2025-05-13 09:34:10', '2025-05-13 09:34:10');
-INSERT INTO `absensi_siswa` VALUES (4, '2025-05-13', 28, 6, 13, '2025-05-13 09:34:10', '2025-05-13 09:34:10');
-INSERT INTO `absensi_siswa` VALUES (5, '2025-05-13', 37, 1, 13, '2025-05-13 09:34:10', '2025-05-13 09:34:10');
-INSERT INTO `absensi_siswa` VALUES (6, '2025-05-13', 46, 2, 13, '2025-05-13 09:34:10', '2025-05-13 09:34:10');
-INSERT INTO `absensi_siswa` VALUES (7, '2025-05-13', 51, 1, 13, '2025-05-13 09:34:10', '2025-05-13 09:34:10');
 
 -- ----------------------------
 -- Table structure for failed_jobs
@@ -508,61 +501,56 @@ CREATE TABLE `siswa`  (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 52 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 97 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of siswa
 -- ----------------------------
-INSERT INTO `siswa` VALUES (1, 'NIS0001', '2401001', 'Ahmad Fauzi', 'L', '082340613574', 'Sumbawa', '2013-03-12', 'Dusun Stowe Berang RT 03 RW 09 Kecamatan Moyo Hilir', 'uploads/siswa/52471919042020_male.jpg', 1, '2025-01-27 00:15:15', '2025-03-07 14:10:06', '2025-03-07 14:10:06');
-INSERT INTO `siswa` VALUES (2, 'NIS0002', NULL, 'Budi', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 2, '2025-01-27 00:15:15', '2025-03-07 13:56:18', '2025-03-07 13:56:18');
-INSERT INTO `siswa` VALUES (3, 'NIS0003', NULL, 'Citra', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 3, '2025-01-27 00:15:15', '2025-03-07 13:56:37', '2025-03-07 13:56:37');
-INSERT INTO `siswa` VALUES (4, 'NIS0004', NULL, 'Dian', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 4, '2025-01-27 00:15:15', '2025-03-07 13:56:54', '2025-03-07 13:56:54');
-INSERT INTO `siswa` VALUES (5, 'NIS0005', NULL, 'Eka', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 5, '2025-01-27 00:15:15', '2025-03-07 13:57:24', '2025-03-07 13:57:24');
-INSERT INTO `siswa` VALUES (6, 'NIS0006', NULL, 'Fajar', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 6, '2025-01-27 00:15:15', '2025-03-07 13:57:40', '2025-03-07 13:57:40');
-INSERT INTO `siswa` VALUES (7, 'NIS0007', '2201001', 'Citra Anggraini', 'P', '085737227689', 'Sumbawa', '2011-02-21', 'Jln.Bay Pass sering atas RT 03 RW 09 Desa kerato kecamatan unter iwes', 'uploads/siswa/03181608022025_Pas Foto Latar Merah.jpg', 7, '2025-01-27 00:15:15', '2025-03-07 13:54:57', '2025-03-07 13:54:57');
-INSERT INTO `siswa` VALUES (8, 'NIS0008', NULL, 'Hendra', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 8, '2025-01-27 00:15:15', '2025-03-07 13:55:51', '2025-03-07 13:55:51');
-INSERT INTO `siswa` VALUES (9, 'NIS0009', NULL, 'Indah', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 9, '2025-01-27 00:15:15', '2025-03-07 13:56:05', '2025-03-07 13:56:05');
-INSERT INTO `siswa` VALUES (10, 'NIS0010', NULL, 'Joko', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 1, '2025-01-27 00:15:15', '2025-03-07 13:38:46', '2025-03-07 13:38:46');
-INSERT INTO `siswa` VALUES (11, 'NIS0011', NULL, 'Kirana', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 2, '2025-01-27 00:15:15', '2025-03-07 13:56:21', '2025-03-07 13:56:21');
-INSERT INTO `siswa` VALUES (12, 'NIS0012', NULL, 'Lukman', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 3, '2025-01-27 00:15:15', '2025-03-07 13:56:40', '2025-03-07 13:56:40');
-INSERT INTO `siswa` VALUES (13, 'NIS0013', NULL, 'Maya', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 4, '2025-01-27 00:15:15', '2025-03-07 13:56:57', '2025-03-07 13:56:57');
-INSERT INTO `siswa` VALUES (14, 'NIS0014', NULL, 'Nina', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 5, '2025-01-27 00:15:15', '2025-03-07 13:57:27', '2025-03-07 13:57:27');
-INSERT INTO `siswa` VALUES (15, 'NIS0015', NULL, 'Omar', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 6, '2025-01-27 00:15:15', '2025-03-07 13:57:43', '2025-03-07 13:57:43');
-INSERT INTO `siswa` VALUES (16, 'NIS0016', NULL, 'Putri', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 7, '2025-01-27 00:15:15', '2025-03-07 13:44:05', '2025-03-07 13:44:05');
-INSERT INTO `siswa` VALUES (17, 'NIS0017', NULL, 'Qori', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 8, '2025-01-27 00:15:15', '2025-03-07 13:55:54', '2025-03-07 13:55:54');
-INSERT INTO `siswa` VALUES (18, 'NIS0018', NULL, 'Rama', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 9, '2025-01-27 00:15:15', '2025-03-07 13:56:08', '2025-03-07 13:56:08');
-INSERT INTO `siswa` VALUES (19, 'NIS0019', NULL, 'Siti', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 1, '2025-01-27 00:15:15', '2025-03-07 13:38:49', '2025-03-07 13:38:49');
-INSERT INTO `siswa` VALUES (20, 'NIS0020', NULL, 'Teguh', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 2, '2025-01-27 00:15:15', '2025-03-07 13:56:24', '2025-03-07 13:56:24');
-INSERT INTO `siswa` VALUES (21, 'NIS0021', NULL, 'Umi', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 3, '2025-01-27 00:15:15', '2025-03-07 13:56:43', '2025-03-07 13:56:43');
-INSERT INTO `siswa` VALUES (22, 'NIS0022', NULL, 'Vina', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 4, '2025-01-27 00:15:15', '2025-03-07 13:57:00', '2025-03-07 13:57:00');
-INSERT INTO `siswa` VALUES (23, 'NIS0023', NULL, 'Wawan', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 5, '2025-01-27 00:15:15', '2025-03-07 13:57:31', '2025-03-07 13:57:31');
-INSERT INTO `siswa` VALUES (24, 'NIS0024', NULL, 'Yulia', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 6, '2025-01-27 00:15:15', '2025-03-07 13:57:49', '2025-03-07 13:57:49');
-INSERT INTO `siswa` VALUES (25, 'NIS0025', NULL, 'Zaki', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 7, '2025-01-27 00:15:15', '2025-03-07 13:43:56', '2025-03-07 13:43:56');
-INSERT INTO `siswa` VALUES (26, 'NIS0026', NULL, 'Ayu', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 8, '2025-01-27 00:15:15', '2025-03-07 13:55:49', '2025-03-07 13:55:49');
-INSERT INTO `siswa` VALUES (27, 'NIS0027', NULL, 'Bayu', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 9, '2025-01-27 00:15:15', '2025-03-07 13:56:03', '2025-03-07 13:56:03');
-INSERT INTO `siswa` VALUES (28, 'NIS0028', NULL, 'Cahya', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 1, '2025-01-27 00:15:15', '2025-03-07 13:38:44', '2025-03-07 13:38:44');
-INSERT INTO `siswa` VALUES (29, 'NIS0029', NULL, 'Dewi', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 2, '2025-01-27 00:15:15', '2025-03-07 13:56:20', '2025-03-07 13:56:20');
-INSERT INTO `siswa` VALUES (30, 'NIS0030', NULL, 'Evan', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 3, '2025-01-27 00:15:15', '2025-03-07 13:56:39', '2025-03-07 13:56:39');
-INSERT INTO `siswa` VALUES (31, 'NIS0031', NULL, 'Farah', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 4, '2025-01-27 00:15:15', '2025-03-07 13:56:55', '2025-03-07 13:56:55');
-INSERT INTO `siswa` VALUES (32, 'NIS0032', NULL, 'Galih', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 5, '2025-01-27 00:15:15', '2025-03-07 13:57:26', '2025-03-07 13:57:26');
-INSERT INTO `siswa` VALUES (33, 'NIS0033', NULL, 'Hani', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 6, '2025-01-27 00:15:15', '2025-03-07 13:57:42', '2025-03-07 13:57:42');
-INSERT INTO `siswa` VALUES (34, 'NIS0034', NULL, 'Ivan', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 7, '2025-01-27 00:15:15', '2025-03-07 13:44:03', '2025-03-07 13:44:03');
-INSERT INTO `siswa` VALUES (35, 'NIS0035', NULL, 'Juli', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 8, '2025-01-27 00:15:15', '2025-03-07 13:55:52', '2025-03-07 13:55:52');
-INSERT INTO `siswa` VALUES (36, 'NIS0036', NULL, 'Kiki', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 9, '2025-01-27 00:15:15', '2025-03-07 13:56:06', '2025-03-07 13:56:06');
-INSERT INTO `siswa` VALUES (37, 'NIS0037', NULL, 'Laila', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 1, '2025-01-27 00:15:15', '2025-03-07 13:38:47', '2025-03-07 13:38:47');
-INSERT INTO `siswa` VALUES (38, 'NIS0038', NULL, 'Miko', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 2, '2025-01-27 00:15:15', '2025-03-07 13:56:23', '2025-03-07 13:56:23');
-INSERT INTO `siswa` VALUES (39, 'NIS0039', NULL, 'Novi', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 3, '2025-01-27 00:15:15', '2025-03-07 13:56:42', '2025-03-07 13:56:42');
-INSERT INTO `siswa` VALUES (40, 'NIS0040', NULL, 'Ovi', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 4, '2025-01-27 00:15:15', '2025-03-07 13:56:58', '2025-03-07 13:56:58');
-INSERT INTO `siswa` VALUES (41, 'NIS0041', NULL, 'Putu', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 5, '2025-01-27 00:15:15', '2025-03-07 13:57:29', '2025-03-07 13:57:29');
-INSERT INTO `siswa` VALUES (42, 'NIS0042', NULL, 'Qisya', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 6, '2025-01-27 00:15:15', '2025-03-07 13:57:45', '2025-03-07 13:57:45');
-INSERT INTO `siswa` VALUES (43, 'NIS0043', NULL, 'Rani', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 7, '2025-01-27 00:15:15', '2025-03-07 13:44:01', '2025-03-07 13:44:01');
-INSERT INTO `siswa` VALUES (44, 'NIS0044', NULL, 'Sandy', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 8, '2025-01-27 00:15:15', '2025-03-07 13:55:56', '2025-03-07 13:55:56');
-INSERT INTO `siswa` VALUES (45, 'NIS0045', NULL, 'Tia', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 9, '2025-01-27 00:15:15', '2025-03-07 13:56:09', '2025-03-07 13:56:09');
-INSERT INTO `siswa` VALUES (46, 'NIS0046', NULL, 'Ulfa', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 1, '2025-01-27 00:15:15', '2025-03-07 13:39:02', '2025-03-07 13:39:02');
-INSERT INTO `siswa` VALUES (47, 'NIS0047', NULL, 'Vita', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 2, '2025-01-27 00:15:15', '2025-03-07 13:56:26', '2025-03-07 13:56:26');
-INSERT INTO `siswa` VALUES (48, 'NIS0048', NULL, 'Wira', 'L', NULL, NULL, NULL, NULL, 'uploads/siswa/52471919042020_male.jpg', 3, '2025-01-27 00:15:15', '2025-03-07 13:56:44', '2025-03-07 13:56:44');
-INSERT INTO `siswa` VALUES (49, 'NIS0049', NULL, 'Yanto', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 4, '2025-01-27 00:15:15', '2025-03-07 13:57:01', '2025-03-07 13:57:01');
-INSERT INTO `siswa` VALUES (51, '240701', '70710001', 'Aisyah Putri', 'P', '081234567890', 'Sumbawa', '2013-01-12', 'Dusun Stowe Berang RT 03 RW 09 Kecamatan Moyo Hilir', 'uploads/siswa/50271431012020_female.jpg', 1, '2025-03-07 14:12:14', '2025-03-07 14:12:14', NULL);
+INSERT INTO `siswa` VALUES (52, '90970001', NULL, 'Desi Marlina', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 19, '2025-05-13 10:23:20', '2025-05-13 10:23:20', NULL);
+INSERT INTO `siswa` VALUES (53, '90970002', NULL, 'Indah Permatasari', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 19, '2025-05-13 10:23:20', '2025-05-13 10:23:20', NULL);
+INSERT INTO `siswa` VALUES (54, '90970003', NULL, 'Nurlaila', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 19, '2025-05-13 10:23:20', '2025-05-13 10:23:20', NULL);
+INSERT INTO `siswa` VALUES (55, '90970004', NULL, 'Rina Oktaviani', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 19, '2025-05-13 10:23:20', '2025-05-13 10:23:20', NULL);
+INSERT INTO `siswa` VALUES (56, '90970005', NULL, 'Sulastri Adekayanti', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 19, '2025-05-13 10:23:20', '2025-05-13 10:23:20', NULL);
+INSERT INTO `siswa` VALUES (57, '90980001', NULL, 'Maya Sari', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 20, '2025-05-13 10:25:48', '2025-05-13 10:25:48', NULL);
+INSERT INTO `siswa` VALUES (58, '90980002', NULL, 'Nia Lestari', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 20, '2025-05-13 10:25:48', '2025-05-13 10:25:48', NULL);
+INSERT INTO `siswa` VALUES (59, '90980003', NULL, 'Rika Amelia', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 20, '2025-05-13 10:25:48', '2025-05-13 10:25:48', NULL);
+INSERT INTO `siswa` VALUES (60, '90980004', NULL, 'Eka Putri', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 20, '2025-05-13 10:25:48', '2025-05-13 10:25:48', NULL);
+INSERT INTO `siswa` VALUES (61, '90980005', NULL, 'Intan Ayu Dewina', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 20, '2025-05-13 10:25:48', '2025-05-13 10:25:48', NULL);
+INSERT INTO `siswa` VALUES (62, '90990001', NULL, 'Ayu Safitri', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 21, '2025-05-13 10:26:09', '2025-05-13 10:26:09', NULL);
+INSERT INTO `siswa` VALUES (63, '90990002', NULL, 'Melati Handayani', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 21, '2025-05-13 10:26:09', '2025-05-13 10:26:09', NULL);
+INSERT INTO `siswa` VALUES (64, '90990003', NULL, 'Dewi Sartika', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 21, '2025-05-13 10:26:09', '2025-05-13 10:26:09', NULL);
+INSERT INTO `siswa` VALUES (65, '90990004', NULL, 'Fatimah Azzahra', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 21, '2025-05-13 10:26:09', '2025-05-13 10:26:09', NULL);
+INSERT INTO `siswa` VALUES (66, '90990005', NULL, 'Nurhasanah', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 21, '2025-05-13 10:26:09', '2025-05-13 10:26:09', NULL);
+INSERT INTO `siswa` VALUES (67, '80840001', NULL, 'Qistina Zahra', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 4, '2025-05-13 10:28:46', '2025-05-13 10:28:46', NULL);
+INSERT INTO `siswa` VALUES (68, '80840002', NULL, 'Rina Susanti', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 4, '2025-05-13 10:28:46', '2025-05-13 10:28:46', NULL);
+INSERT INTO `siswa` VALUES (69, '80840003', NULL, 'Siti Rohmah', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 4, '2025-05-13 10:28:46', '2025-05-13 10:28:46', NULL);
+INSERT INTO `siswa` VALUES (70, '80840004', NULL, 'Tania Wulandari', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 4, '2025-05-13 10:28:46', '2025-05-13 10:28:46', NULL);
+INSERT INTO `siswa` VALUES (71, '80840005', NULL, 'Vania Lestari', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 4, '2025-05-13 10:28:46', '2025-05-13 10:28:46', NULL);
+INSERT INTO `siswa` VALUES (72, '80850001', NULL, 'Winda Safitri', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 5, '2025-05-13 10:28:46', '2025-05-13 10:28:46', NULL);
+INSERT INTO `siswa` VALUES (73, '80850002', NULL, 'Saviera Pratiwi', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 5, '2025-05-13 10:28:46', '2025-05-13 10:28:46', NULL);
+INSERT INTO `siswa` VALUES (74, '80850003', NULL, 'Yuni Rahayu', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 5, '2025-05-13 10:28:46', '2025-05-13 10:28:46', NULL);
+INSERT INTO `siswa` VALUES (75, '80850004', NULL, 'Zahra Maulida', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 5, '2025-05-13 10:28:46', '2025-05-13 10:28:46', NULL);
+INSERT INTO `siswa` VALUES (76, '80850005', NULL, 'Anisa Fitriani', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 5, '2025-05-13 10:28:46', '2025-05-13 10:28:46', NULL);
+INSERT INTO `siswa` VALUES (77, '80860001', NULL, 'Rani Pratiwi', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 6, '2025-05-13 10:28:46', '2025-05-13 10:28:46', NULL);
+INSERT INTO `siswa` VALUES (78, '80860002', NULL, 'Nurul Hidayah', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 6, '2025-05-13 10:28:46', '2025-05-13 10:28:46', NULL);
+INSERT INTO `siswa` VALUES (79, '80860003', NULL, 'Fitriani Dewi', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 6, '2025-05-13 10:28:46', '2025-05-13 10:28:46', NULL);
+INSERT INTO `siswa` VALUES (80, '80860004', NULL, 'Rahmawati', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 6, '2025-05-13 10:28:46', '2025-05-13 10:28:46', NULL);
+INSERT INTO `siswa` VALUES (81, '80860005', NULL, 'Lilis Suryani', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 6, '2025-05-13 10:28:46', '2025-05-13 10:28:46', NULL);
+INSERT INTO `siswa` VALUES (82, '70710001', NULL, 'Aisyah Putri', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 1, '2025-05-13 10:31:19', '2025-05-13 10:31:19', NULL);
+INSERT INTO `siswa` VALUES (83, '70710002', NULL, 'Citra Mutmainnah', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 1, '2025-05-13 10:31:19', '2025-05-13 10:31:19', NULL);
+INSERT INTO `siswa` VALUES (84, '70710003', NULL, 'Cahaya Nuraini', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 1, '2025-05-13 10:31:19', '2025-05-13 10:31:19', NULL);
+INSERT INTO `siswa` VALUES (85, '70710004', NULL, 'Dian Maharani', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 1, '2025-05-13 10:31:19', '2025-05-13 10:31:19', NULL);
+INSERT INTO `siswa` VALUES (86, '70710005', NULL, 'Fitri Handayani', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 1, '2025-05-13 10:31:19', '2025-05-13 10:31:19', NULL);
+INSERT INTO `siswa` VALUES (87, '70720001', NULL, 'Eka Sari', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 2, '2025-05-13 10:31:19', '2025-05-13 10:31:19', NULL);
+INSERT INTO `siswa` VALUES (88, '70720002', NULL, 'Gita Puspita', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 2, '2025-05-13 10:31:19', '2025-05-13 10:31:19', NULL);
+INSERT INTO `siswa` VALUES (89, '70720003', NULL, 'Halimah Salsabila', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 2, '2025-05-13 10:31:19', '2025-05-13 10:31:19', NULL);
+INSERT INTO `siswa` VALUES (90, '70720004', NULL, 'Indah Pertama', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 2, '2025-05-13 10:31:19', '2025-05-13 10:31:19', NULL);
+INSERT INTO `siswa` VALUES (91, '70720005', NULL, 'Jihan Amelia', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 2, '2025-05-13 10:31:19', '2025-05-13 10:31:19', NULL);
+INSERT INTO `siswa` VALUES (92, '70730001', NULL, 'Lestari Ayu', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 3, '2025-05-13 10:31:19', '2025-05-13 10:31:19', NULL);
+INSERT INTO `siswa` VALUES (93, '70730002', NULL, 'Meylani Rizkita', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 3, '2025-05-13 10:31:19', '2025-05-13 10:31:19', NULL);
+INSERT INTO `siswa` VALUES (94, '70730003', NULL, 'Nadira Shafira', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 3, '2025-05-13 10:31:19', '2025-05-13 10:31:19', NULL);
+INSERT INTO `siswa` VALUES (95, '70730004', NULL, 'Olivia Maharani', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 3, '2025-05-13 10:31:19', '2025-05-13 10:31:19', NULL);
+INSERT INTO `siswa` VALUES (96, '70730005', NULL, 'Putri Amalia', 'P', NULL, NULL, NULL, NULL, 'uploads/siswa/50271431012020_female.jpg', 3, '2025-05-13 10:31:19', '2025-05-13 10:31:19', NULL);
 
 -- ----------------------------
 -- Table structure for tahun_pelajaran
