@@ -42,7 +42,7 @@ class SikapController extends Controller
      */
     public function create()
     {
-        $kelas = Kelas::orderBy('nama_kelas')->get();
+        $kelas = Kelas::orderByRaw("FIELD(nama_kelas, 'KELAS VIII A', 'KELAS VIII B', 'KELAS VIII C', 'KELAS IX A', 'KELAS IX B', 'KELAS IX C')")->get();
         return view('admin.sikap.home', compact('kelas'));
     }
 

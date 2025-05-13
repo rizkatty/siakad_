@@ -28,7 +28,7 @@ class JadwalController extends Controller
     public function index()
     {
         $hari = Hari::all();
-        $kelas = Kelas::OrderBy('nama_kelas', 'asc')->get();
+        $kelas = Kelas::orderByRaw("FIELD(nama_kelas, 'KELAS VIII A', 'KELAS VIII B', 'KELAS VIII C', 'KELAS IX A', 'KELAS IX B', 'KELAS IX C')")->get();;
         $ruang = Ruang::all();
         $guru = Guru::OrderBy('kode', 'asc')->get();
         return view('admin.jadwal.index', compact('hari', 'kelas', 'guru', 'ruang'));

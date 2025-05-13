@@ -53,6 +53,11 @@
                                     Edit
                                 </button>
                                 <!-- <button class="btn btn-primary">Edit</button> -->
+                                <form action="{{ route('tugas_kelas.destroy', $data->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Yakin ingin menghapus tugas ini?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                </form>
                             </td>
                         </tr>
                         <!-- Edit Task Modal -->

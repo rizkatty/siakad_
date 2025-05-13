@@ -77,10 +77,14 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="wali_kelas">Wali Kelas</label>
-                        <input type="text" id="wali_kelas" class="form-control" readonly>
+                        <label for="guru_id">Guru</label>
+                        <select name="guru_id" id="guru_id" class="form-control">
+                            <option selected disabled>Pilih Guru</option>
+                            @foreach($guru as $result => $data)
+                            <option value="{{ $data->id }}">{{ $data->nama_guru }}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    <input type="hidden" name="guru_id" id="guru_id">
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" data-dismiss="modal">Close</button>

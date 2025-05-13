@@ -6,6 +6,7 @@ use App\Guru;
 use App\Kelas;
 use App\WaliKelas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WaliKelasController extends Controller
 {
@@ -21,18 +22,34 @@ class WaliKelasController extends Controller
     {
         // Validasi input
         $request->validate([
-            'kelas_id' => 'required',
-            'guru_id' => 'required', // Validasi guru_id
+            'kelas_id' => 'required|exists:kelas,id',
+            'guru_id' => 'required|exists:guru,id',
         ]);
 
-        // Simpan data wali kelas
-        WaliKelas::create([
-            'kelas_id' => $request->kelas_id,
-            'guru_id' => $request->guru_id,
-        ]);
+        DB::beginTransaction();
 
-        return redirect()->back()->with('success', 'Data wali kelas berhasil disimpan!');
+        try {
+            WaliKelas::create([
+                'kelas_id' => $request->kelas_id,
+                'guru_id' => $request->guru_id,
+            ]);
+
+            $kelas = Kelas::findOrFail($request->kelas_id);
+            $kelas->update([
+                'guru_id' => $request->guru_id,
+            ]);
+
+
+            DB::commit();
+
+            return redirect()->back()->with('success', 'Data wali kelas berhasil disimpan!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat menyimpan data: ' . $e->getMessage());
+        }
     }
+
 
     public function update(Request $request, $id)
     {
@@ -42,26 +59,56 @@ class WaliKelasController extends Controller
             'guru_id' => 'required|exists:guru,id',
         ]);
 
-        // Update data di tabel wali_kelas
-        $walikelas = WaliKelas::findOrFail($id);
-        $walikelas->update([
-            'kelas_id' => $request->kelas_id,
-            'guru_id' => $request->guru_id,
-        ]);
+        DB::beginTransaction();
 
-        // Redirect dengan pesan sukses
-        return redirect()->route('walikelas.list')->with('success', 'Data Wali Kelas berhasil diubah.');
+        try {
+            $walikelas = WaliKelas::findOrFail($id);
+            $walikelas->update([
+                'kelas_id' => $request->kelas_id,
+                'guru_id' => $request->guru_id,
+            ]);
+
+            $kelas = Kelas::findOrFail($request->kelas_id);
+            $kelas->update([
+                'guru_id' => $request->guru_id,
+            ]);
+
+            DB::commit();
+
+            return redirect()->route('walikelas.list')->with('success', 'Data Wali Kelas berhasil diubah.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat mengubah data: ' . $e->getMessage());
+        }
     }
+
 
     public function destroy($id)
     {
-        // Temukan data wali_kelas berdasarkan ID
-        $walikelas = WaliKelas::findOrFail($id);
+        DB::beginTransaction();
 
-        // Hapus data dari database
-        $walikelas->delete();
+        try {
+            // Temukan data wali_kelas berdasarkan ID
+            $walikelas = WaliKelas::findOrFail($id);
+            $kelas = Kelas::findOrFail($walikelas->kelas_id);
 
-        // Redirect dengan pesan sukses
-        return redirect()->route('walikelas.list')->with('success', 'Data Wali Kelas berhasil dihapus.');
+            // Set kolom guru_id pada tabel kelas menjadi null
+            $kelas->update([
+                'guru_id' => null,
+            ]);
+
+            // Hapus data wali_kelas
+            $walikelas->delete();
+
+            DB::commit();
+
+            // Redirect dengan pesan sukses
+            return redirect()->route('walikelas.list')->with('success', 'Data Wali Kelas berhasil dihapus.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat menghapus data: ' . $e->getMessage());
+        }
     }
 }

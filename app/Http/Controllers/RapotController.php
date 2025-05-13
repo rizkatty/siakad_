@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Absen;
+use App\AbsenSiswa;
 use App\Guru;
 use App\Kelas;
 use App\Mapel;
@@ -37,7 +39,7 @@ class RapotController extends Controller
      */
     public function create()
     {
-        $kelas = Kelas::orderBy('nama_kelas')->get();
+        $kelas = Kelas::orderByRaw("FIELD(nama_kelas, 'KELAS VIII A', 'KELAS VIII B', 'KELAS VIII C', 'KELAS IX A', 'KELAS IX B', 'KELAS IX C')")->get();
         return view('admin.rapot.home', compact('kelas'));
     }
 
@@ -131,7 +133,10 @@ class RapotController extends Controller
         $kelas = Kelas::findorfail($siswa->kelas_id);
         $jadwal = Jadwal::orderBy('mapel_id')->where('kelas_id', $kelas->id)->get();
         $mapel = $jadwal->groupBy('mapel_id');
-        return view('admin.rapot.show', compact('mapel', 'siswa', 'kelas'));
+        $hadir = AbsenSiswa::where('siswa_id', $siswa->id)->where('kehadiran_id', 1)->count();
+        $izin = AbsenSiswa::where('siswa_id', $siswa->id)->where('kehadiran_id', 2)->count();
+        $alfa = AbsenSiswa::where('siswa_id', $siswa->id)->where('kehadiran_id', 6)->count();
+        return view('admin.rapot.show', compact('mapel', 'siswa', 'kelas', 'hadir', 'izin', 'alfa'));
     }
 
     public function predikat(Request $request)
